@@ -136,16 +136,7 @@ class SocketInterface:
         Datagrams require fragmentation when their size exceeds the Maximum Transfer Unit (MTU) of the transmission
         medium. Datagrams may be fragmented by the sending host (all Internet Protocol versions) or an intermediate
         router (Internet Protocol Version 4 only). If a datagram must be fragmented, and the DontFragment option is
-        set, the datagram is discarded, and an Internet Control Message Protocol (ICMP) error message is sent back to
-        the sender of the datagram."""
+        set, the datagram is discarded, and an Internet Control Message Protocol (ICMPPacket) error message is
+        sent back to the sender of the datagram."""
 
         return socket.SOL_IP, 10, 1
-
-
-sk = SocketInterface('google.com', 'icmp')
-sk.send_packet(b'!2B3H')
-received, address, time_left = sk.receive_packet()
-print(sk.destination)
-print(received)
-print(address)
-print(time_left)
